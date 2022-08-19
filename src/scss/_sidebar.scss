@@ -1,0 +1,55 @@
+.sidebar{
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: $border;
+    font-size: 1.5rem;
+    padding: 20px;
+
+    .logo{
+        padding-bottom: 25px;
+    }
+
+    .menu,
+    .library{
+        padding: 10px 0;
+        p{
+            color: $yellow;
+        }
+
+        a{
+            display: block;
+            color: $light-color;
+            @include grap-text(1.2rem);
+            padding-right: 20px;
+
+            &:hover{
+                color: $yellow;
+                border-right: .2rem solid $yellow;
+            }
+        }
+    }
+
+    .general{
+        &::before{
+            content: '';
+            top: 0;
+            left: 0;
+            height: .2rem;
+            width: 100%;
+            background: #000;
+        } 
+
+        a{
+            display: block;
+            @include grap-text(1.2rem);
+        }
+    }
+
+    .log{
+        position: absolute;
+        bottom: 40px;
+        color: $light-color;
+    }
+}

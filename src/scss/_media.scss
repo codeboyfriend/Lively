@@ -1,0 +1,25 @@
+@media (max-width: 440px) {
+    .cards,
+    .other_cards{
+        @include grid(150px);
+    }
+
+    .other_cards{
+        margin-bottom: calc(5rem + 10px);
+    }
+
+    .navbar{
+        .links{
+            display: none;
+        }
+        .mobile_nav{
+            display: flex;
+        }
+    }
+}
+
+@media (max-width: 370px) {
+    .other_cards{
+        @include grid(100px);
+    }
+}
