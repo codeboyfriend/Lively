@@ -18,28 +18,28 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   const getPopular = async () => {
-    const result = await axios(`https://api.themoviedb.org/3/movie/popular?api_key=a42de693a0209f00fe39aa60310b04b9&language=en-US&page=1`)
+    const result = await axios(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_APP_API_KEY}&language=en-US&page=1`)
 
     setPopular(result.data.results)
     // setIsLoading(false)
   }
 
   const getTrend = async () => {
-    const result = await axios(`https://api.themoviedb.org/3/trending/all/day?api_key=a42de693a0209f00fe39aa60310b04b9`)
+    const result = await axios(`https://api.themoviedb.org/3/trending/all/day?api_key=${import.meta.env.VITE_APP_API_KEY}`)
 
     setTrending(result.data.results)
     setIsLoading(false)
   }
 
   const getComic = async () => {
-    const result = await axios(`https://api.themoviedb.org/3/list/1?api_key=a42de693a0209f00fe39aa60310b04b9&language=en-US`)
+    const result = await axios(`https://api.themoviedb.org/3/list/1?api_key=${import.meta.env.VITE_APP_API_KEY}&language=en-US`)
 
     setComic(result.data.items)
     setIsLoading(false)
   }
 
   const getMovie = async () => {
-    const result = await axios(`https://api.themoviedb.org/3/list/10?api_key=a42de693a0209f00fe39aa60310b04b9&language=en-US`)
+    const result = await axios(`https://api.themoviedb.org/3/list/10?api_key=${import.meta.env.VITE_APP_API_KEY}&language=en-US`)
 
     setMovie(result.data.items)
     setIsLoading(false)

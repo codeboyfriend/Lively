@@ -8,7 +8,7 @@ const Search = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const fetchSearchItem = () => {
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=a42de693a0209f00fe39aa60310b04b9&language=en-US&query=${text}&page=1&include_adult=false`)
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${import.meta.env.VITE_APP_API_KEY}&language=en-US&query=${text}&page=1&include_adult=false`)
         .then(res => res.json())
         .then(data => setFilterItems(data.results))
         setIsLoading(false)

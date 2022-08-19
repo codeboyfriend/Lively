@@ -9,7 +9,7 @@ const SingleTrend = ({ popular }) => {
     const [isLoading, setIsLoading] = useState(true);
 
     const fetchTrend = () => {
-        fetch(`https://api.themoviedb.org/3/movie/${trendId}?api_key=a42de693a0209f00fe39aa60310b04b9&language=en-US&page=1`)
+        fetch(`https://api.themoviedb.org/3/movie/${trendId}?api_key=${import.meta.env.VITE_APP_API_KEY}&language=en-US&page=1`)
         .then(res => res.json())
         .then(data => setTrend(data))
         setIsLoading(false)
