@@ -1,8 +1,25 @@
-import React from 'react'
+import Comic from "../Comic";
+import Navbar from "../utils/Navbar";
 
-const ComicPage = () => {
+const ComicPage = ({
+    comic
+}) => {
   return (
-    <div>ComicPage</div>
+    <div className="trends" style={{
+      marginTop: '80px'
+    }}>
+      <Navbar />
+      <div className="heading">
+          <h3>Favorites</h3>
+      </div>
+
+      <section className="cards">
+          {comic.map((comicItem) => <Comic 
+              key={comicItem.id} 
+              comicItem={comicItem} />
+          )}
+      </section>
+    </div>
   )
 }
 

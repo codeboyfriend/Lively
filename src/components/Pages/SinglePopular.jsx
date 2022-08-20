@@ -2,8 +2,12 @@ import { useState, useEffect } from "react";
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import Navbar from "../utils/Navbar";
 import Trends from "../Trends";
+import Comics from "../Comics";
 
-const SinglePopular = ({ trending }) => {
+const SinglePopular = ({ 
+    trending,
+    comic 
+}) => {
     const popularId = window.location.pathname.split("/")[2];
     const [popular, setPopular] = useState({});
     const [isLoading, setIsLoading] = useState(true);
@@ -57,10 +61,27 @@ const SinglePopular = ({ trending }) => {
 
         <Trends trending={trending} />
 
+        <Comics comic={comic} />
+
         <h1 className="other_title">You might also like</h1>
         <div className="other_cards">
             {
-                trending.slice(1, 11).map((other) => (
+                trending.slice(1, 6).map((other) => (
+                    <div className="card">
+                        <img src={`https://image.tmdb.org/t/p/w200/${other.poster_path}`} alt="" />
+
+                        <div className="content">
+                            <div>
+                                <h2>{other.title}</h2>
+                                <p className='date'>{other.release_date}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+
+{
+                comic.slice(1, 6).map((other) => (
                     <div className="card">
                         <img src={`https://image.tmdb.org/t/p/w200/${other.poster_path}`} alt="" />
 

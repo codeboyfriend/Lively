@@ -1,10 +1,12 @@
 import Navbar from "../utils/Navbar";
 import Trends from "../Trends";
 import Populars from "../Populars";
+import Comics from "../Comics";
 
 const Home = ({
     popular,
     trending,
+    comic,
     isLoading
 }) => {
   return isLoading ? (
@@ -19,6 +21,7 @@ const Home = ({
       <Navbar />
       <Trends trending={trending} />
       <Populars popular={popular} />
+      <Comics comic={comic} />
     </div>
   )
 }

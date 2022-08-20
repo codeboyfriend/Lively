@@ -27,7 +27,7 @@ const Navbar = () => {
       <div className="links">
         <Link to="/movies">Movies</Link>
         <Link to="#">TV Shows</Link>
-        <Link to="#">Comics</Link>
+        <Link to="/comics">Comics</Link>
       </div>
 
       <div className="icons">
@@ -43,7 +43,6 @@ const Navbar = () => {
           type="search" 
           placeholder='Search here...'
           onChange={(e) => setText(e.target.value)} 
-          onFocus={true}
           />
         <FaSearch onClick={() => submitSearch()} className='icon' />
       </div>
@@ -59,7 +58,7 @@ const Navbar = () => {
           <Link to="#"><FaTv /></Link>
         </div>
         <div>
-          <Link to="#"><GiAmericanFootballPlayer /></Link>
+          <Link to="/comics"><GiAmericanFootballPlayer /></Link>
         </div>
       </div>
     </div>

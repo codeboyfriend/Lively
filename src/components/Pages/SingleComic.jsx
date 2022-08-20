@@ -2,23 +2,26 @@ import { useState, useEffect } from "react";
 import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import Navbar from "../utils/Navbar";
 import Populars from "../Populars";
-import Comics from "../Comics";
+import Trends from "../Trends";
 
-const SingleTrend = ({ popular, comic }) => {
-    const trendId = window.location.pathname.split("/")[2];
-    const [trend, setTrend] = useState({});
+const SingleTrend = ({ 
+    popular,
+    trending 
+}) => {
+    const comicId = window.location.pathname.split("/")[2];
+    const [comic, setComic] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
-    const fetchTrend = () => {
-        fetch(`https://api.themoviedb.org/3/movie/${trendId}?api_key=${import.meta.env.VITE_APP_API_KEY}&language=en-US&page=1`)
+    const fetComic = () => {
+        fetch(`https://api.themoviedb.org/3/movie/${comicId}?api_key=${import.meta.env.VITE_APP_API_KEY}&language=en-US&page=1`)
         .then(res => res.json())
-        .then(data => setTrend(data))
+        .then(data => setComic(data))
         setIsLoading(false)
     }
     
   
     useEffect(() => {
-        fetchTrend()
+        fetComic()
     }, [])
 
   return isLoading ? (<h1>Loading</h1>) : (
@@ -26,21 +29,21 @@ const SingleTrend = ({ popular, comic }) => {
         <Navbar />
         <div className="card_back">
             <div className="cover-grad"></div>
-            <img src={`https://image.tmdb.org/t/p/original/${trend.backdrop_path}`} alt="" />
+            <img src={`https://image.tmdb.org/t/p/original/${comic.backdrop_path}`} alt="" />
 
             <div className="content">
                 <div>
-                    <h2>{trend.title}</h2>
-                    <p className='date'>{trend.release_date}</p>
+                    <h2>{comic.title}</h2>
+                    <p className='date'>{comic.release_date}</p>
                 </div>
                 <div>
-                <p>{trend.runtime}mins</p>
+                <p>{comic.runtime}mins</p>
                 </div>
             </div>
         </div>
 
         <div className="text_content">
-            {trend.overview}
+            {comic.overview}
 
             <div className="rating">
                 <FaStar />
@@ -52,8 +55,8 @@ const SingleTrend = ({ popular, comic }) => {
         </div>
 
         <Populars popular={popular} />
-
-        <Comics comic={comic} />
+        
+        <Trends trending={trending} />
 
         <h1 className="other_title">You might also like</h1>
 
@@ -72,8 +75,11 @@ const SingleTrend = ({ popular, comic }) => {
                     </div>
                 ))
             }
+        </div>
+
+        <div className="other_cards">
             {
-                comic.slice(1, 6).map((other) => (
+                trending.slice(1, 6).map((other) => (
                     <div className="card">
                         <img src={`https://image.tmdb.org/t/p/w200/${other.poster_path}`} alt="" />
 

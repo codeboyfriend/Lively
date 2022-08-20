@@ -3,9 +3,12 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../css/style.css';
 import Home from './components/Pages/Home';
-import Movies from './components/Pages/MoviesPage';
+import Movies from './components/Pages/Movies';
+import ComicPage from './components/Pages/ComicPage';
 import SingleTrend from './components/Pages/SingleTrend';
 import SinglePopular from './components/Pages/SinglePopular';
+import SingleComic from './components/Pages/SingleComic';
+import SingleMovie from './components/Pages/SingleMovie';
 import Search from './components/Pages/Search';
 import SingleSearch from './components/Pages/SingleSearch';
 
@@ -21,7 +24,7 @@ function App() {
     const result = await axios(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_APP_API_KEY}&language=en-US&page=1`)
 
     setPopular(result.data.results)
-    // setIsLoading(false)
+    setIsLoading(false)
   }
 
   const getTrend = async () => {
@@ -59,21 +62,40 @@ function App() {
           <Route path='/' element={<Home 
             popular={popular}
             trending={trending}
+            comic={comic}
             isLoading={isLoading} 
           />} />
 
           <Route path='/trend/:trendId' element={<SingleTrend 
             popular={popular}
+            comic={comic}
           />} />
 
           <Route path='/popularItem/:popularId' element={<SinglePopular 
             trending={trending}
+            comic={comic}
+          />} />
+
+          <Route path='/comicItem/:popularId' element={<SingleComic 
+            trending={trending}
+            popular={popular}
+          />}/>
+
+          <Route path='/movieItem/:movieId' element={<SingleMovie 
+            trending={trending}
+            popular={popular}
           />} />
 
           <Route path='/search/:text' element={<Search />} />
 
           <Route path='/movies' element={<Movies 
             movie={movie}
+            popular={popular}
+            trending={trending}
+          />} />
+
+          <Route path='/comics' element={<ComicPage 
+            comic={comic}
           />} />
 
           <Route path='/filterItem/:itemId' element={<SingleSearch
