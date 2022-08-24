@@ -11,7 +11,7 @@
     transition: all .2s linear;
 }
 
-$yellow: #eacf4f;
+$yellow: #ad0000;
 $white: #fff;
 $bgColor: #111111;
 $black: #000;
@@ -83,13 +83,26 @@ a{
 }
 
 .loading{
-    background-image: url("../image/header.jpg")
-    no-repeat center center / cover;
+    background-image: url('loadBG.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
+
+    .load_logo{
+        width: 40px;
+        margin: 0 auto;
+        font-weight: bolder;
+        background-color: $yellow;
+        padding: 8px;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif 
+    }
 
     .content{
         text-align: center;
