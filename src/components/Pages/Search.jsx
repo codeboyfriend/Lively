@@ -21,6 +21,7 @@ const Search = () => {
   return isLoading ? (
     <div className="loading">
       <div className="content">
+        <p className="load_logo">L</p>
         <h1>Lively</h1>
         <p>Find movies that bring your mood back.</p>
       </div>

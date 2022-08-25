@@ -24,7 +24,15 @@ const SingleTrend = ({
         fetComic()
     }, [])
 
-  return isLoading ? (<h1>Loading</h1>) : (
+  return isLoading ? (
+    <div className="loading">
+      <div className="content">
+        <p className="load_logo">L</p>
+        <h1>Lively</h1>
+        <p>Find movies that bring your mood back.</p>
+      </div>
+    </div>
+    ) : (
     <div className="single_card">
         <Navbar />
         <div className="card_back">
