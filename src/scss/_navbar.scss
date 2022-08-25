@@ -63,7 +63,7 @@
         background: $bgColor;
         padding: 20px;
         position: absolute;
-        top: 90vh;
+        top: calc(90vh + 8px);
         left: 0;
         display: flex;
         justify-content: space-around;
